@@ -1,0 +1,19 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: three-tier-ks-eks-cluster
+  region: us-west-2
+  version: "1.28"
+
+iam:
+  serviceRoleARN: "arn:aws:iam::619071313853:role/eks-cluster-role"
+  withOIDC: true
+
+managedNodeGroups:
+  - name: standard-workers
+    instanceType: t2.medium
+    desiredCapacity: 2
+    minSize: 2
+    maxSize: 2
+    privateNetworking: true
